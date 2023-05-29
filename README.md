@@ -45,7 +45,6 @@ https://github.com/mrvollger/StainedGlass StainedGlass: Interactive visualizatio
 
 我比较喜欢用snakemake，主要原因是
 
-- shell脚本学的不好
 
 - snakemake非常好安装
 
