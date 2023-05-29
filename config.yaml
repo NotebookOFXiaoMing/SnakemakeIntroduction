@@ -1,0 +1,7 @@
+raw_fq:
+  r1: "/data/myan/raw_data/practice/snakemake/groupMeeting/Arabidopsis_RNAseq/raw.fastq/{sample}_R1.fastq.gz"
+  r2: "/data/myan/raw_data/practice/snakemake/groupMeeting/Arabidopsis_RNAseq/raw.fastq/{sample}_R2.fastq.gz"
+
+reference:
+  fa: "/data/myan/raw_data/practice/snakemake/groupMeeting/Arabidopsis_RNAseq/reference/genome/at_chr1.fa"
+  gtf: "/data/myan/raw_data/practice/snakemake/groupMeeting/Arabidopsis_RNAseq/reference/gtf/at_chr1.gff"
