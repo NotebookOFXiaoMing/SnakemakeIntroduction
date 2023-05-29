@@ -54,6 +54,47 @@ https://github.com/mrvollger/StainedGlass StainedGlass: Interactive visualizatio
 https://github.com/darencard/2019-snakemake-Harvard-Informatics-nanocourse/blob/master/tutorial.md
 
 
+### 配置环境
+
+```
+conda create -n rnaseq
+conda activate rnaseq
+conda install snakemake
+conda install fastp
+conda install hisat2
+conda install samtools
+conda install stringtie
+conda install r
+conda install r-tidyverse
+conda install bioconductor-tximport
+```
+
+### 运行代码
+
+```
+snakemake -s rnaseq.smk --configfile=config.yaml --cores 8 -p
+```
+
+如果要运行自己的数据，只需要修改config.yaml文件里的文件路径即可
+
+如果是在集群上提交任务
+
+```
+#!/bin/bash
 
 
+#SBATCH --job-name="rnaseq"
+#SBATCH -n 4 #threads
+#SBATCH -N 1 #node number
+#SBATCH --mem=4000
+#SBATCH --partition=cuPartition
+#SBATCH --mail-user=mingyan24@126.com
+#SBATCH --mail-type=BEGIN,END,FAIL
+
+source activate rnaseq
+snakemake --cluster "sbatch --output=/abc/00.slurm.out/%j.out \
+--error=/abc/00.slurm.out/%j.out --cpus-per-task={threads} \
+--mail-type=END,FAIL --mail-user=mingyan24@126.com --partition=cuPartition --mem={resources.mem_mb}" \
+--jobs 20 -s rnaseq.smk -p -k
+```
 
